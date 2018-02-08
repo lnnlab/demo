@@ -1,5 +1,7 @@
 package com.lnnlab.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +18,9 @@ public class TestController {
 	private String config;
 
 	@RequestMapping("/test")
-	public String test() {
+	public String test(HttpServletRequest requset) {
+		
+		requset.getSession().setAttribute("test", "test");
 		test.test();
 		return test.test2()+"-"+config;
 	}
