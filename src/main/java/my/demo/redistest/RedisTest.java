@@ -1,4 +1,4 @@
-package com.lnnlab.demo.redistest;
+package my.demo.redistest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
