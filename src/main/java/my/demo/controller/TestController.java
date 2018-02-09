@@ -27,6 +27,11 @@ public class TestController {
 		test.test();
 		return test.test2() + "-" + config;
 	}
+	
+	@RequestMapping("/testv")
+	public String testv(HttpServletRequest requset) {
+		return "testv";
+	}
 
 	@RequestMapping("/test2")
 	public String test2(HttpServletRequest requset) {
