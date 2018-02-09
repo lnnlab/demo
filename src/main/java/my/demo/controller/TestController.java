@@ -40,6 +40,7 @@ public class TestController {
 
 	@RequestMapping("/test3")
 	public String test3(HttpServletRequest requset) {
+		dubboTest.test();
 		return "500";
 	}
 
@@ -47,6 +48,6 @@ public class TestController {
 	public String testdubbo(HttpServletRequest requset) {
 		return "test";
 	}
-
-
+	@Reference(interfaceClass=IDubboTest.class,lazy=true,check=false)
+	private IDubboTest dubboTest;
 }
