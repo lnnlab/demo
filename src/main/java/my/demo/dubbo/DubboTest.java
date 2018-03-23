@@ -1,15 +1,14 @@
 package my.demo.dubbo;
 
-import org.springframework.stereotype.Component;
-
+import my.demo.aop.TestAnn;
 
 import com.alibaba.dubbo.config.annotation.Service;
 
-@Service(interfaceClass = IDubboTest.class)
-@Component
+@Service(interfaceClass = IDubboTest.class,filter="mytest")
 public class DubboTest implements IDubboTest {
 
 	@Override
+	@TestAnn("test-ann")
 	public String test() {
 		return "dubbo";
 	}

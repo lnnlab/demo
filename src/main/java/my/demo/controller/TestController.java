@@ -4,11 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import my.demo.dubbo.IDubboTest;
 import my.demo.redistest.RedisTest;
+import my.demo.web.AjaxMsg;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 
@@ -39,15 +42,18 @@ public class TestController {
 	}
 
 	@RequestMapping("/test3")
-	public String test3(HttpServletRequest requset) {
+	public String test3(HttpServletRequest requset,Model model) {
 		dubboTest.test();
+		model.addAttribute("user","test");
 		return "500";
 	}
 
 	@RequestMapping("/testdubbo")
-	public String testdubbo(HttpServletRequest requset) {
-		return "test";
+	@ResponseBody
+	public AjaxMsg testdubbo(HttpServletRequest requset) {
+		return AjaxMsg.ok();
 	}
-	@Reference(interfaceClass=IDubboTest.class,lazy=true,check=false)
+	
+	@Reference(interfaceClass=IDubboTest.class,lazy=true,check=false,proxy="myjdkProxy")
 	private IDubboTest dubboTest;
 }

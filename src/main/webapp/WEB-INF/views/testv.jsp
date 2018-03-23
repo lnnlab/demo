@@ -7,5 +7,6 @@
 </head>
 <body>
 testv
+${user}
 </body>
 </html>

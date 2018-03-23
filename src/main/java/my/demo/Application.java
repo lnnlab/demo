@@ -5,10 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 
 @SpringBootApplication
-@EnableDubboConfiguration
 public class Application extends SpringBootServletInitializer {
 
 	@Override
