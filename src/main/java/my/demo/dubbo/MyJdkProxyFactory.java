@@ -1,12 +1,10 @@
 package my.demo.dubbo;
 
-import com.alibaba.dubbo.rpc.proxy.jdk.JdkProxyFactory;
-import com.alibaba.dubbo.common.Constants;
-import com.alibaba.dubbo.common.extension.Activate;
+import java.lang.reflect.Proxy;
+
 import com.alibaba.dubbo.rpc.Invoker;
 import com.alibaba.dubbo.rpc.proxy.InvokerInvocationHandler;
-
-import java.lang.reflect.Proxy;
+import com.alibaba.dubbo.rpc.proxy.jdk.JdkProxyFactory;
 public class MyJdkProxyFactory extends JdkProxyFactory{
 	@Override
     @SuppressWarnings("unchecked")
