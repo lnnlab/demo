@@ -54,6 +54,6 @@ public class TestController {
 		return AjaxMsg.ok();
 	}
 	
-	@Reference(interfaceClass=IDubboTest.class,lazy=true,check=false,proxy="myjdkProxy")
+	@Reference(interfaceClass=IDubboTest.class,lazy=true,check=false)
 	private IDubboTest dubboTest;
 }
