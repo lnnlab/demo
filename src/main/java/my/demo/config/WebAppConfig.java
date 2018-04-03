@@ -22,20 +22,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-
 /**
- * @author linn
- * 配置拦截器、fliter，servlet，ServletListener 例子
+ * @author linn 配置拦截器、fliter，servlet，ServletListener 例子
  *
  */
 @Configuration
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 	public void addInterceptors(InterceptorRegistry registry) {
-    	registry.addInterceptor(new TestInterceptor()).addPathPatterns("/**");
+		registry.addInterceptor(new TestInterceptor()).addPathPatterns("/**");
 	}
-	
-	
-	
+
 	@Bean
 	public FilterRegistrationBean filterRegistration() {
 		FilterRegistrationBean registration = new FilterRegistrationBean();
@@ -49,14 +45,16 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public ServletRegistrationBean testServletRegistration() {
-		ServletRegistrationBean registration = new ServletRegistrationBean(new TestServlet());
+		ServletRegistrationBean registration = new ServletRegistrationBean(
+				new TestServlet());
 		registration.addUrlMappings("/hello");
 		return registration;
 	}
 
 	@Bean
 	public ServletListenerRegistrationBean<TestListener> testListenerRegistration() {
-		ServletListenerRegistrationBean<TestListener> registration = new ServletListenerRegistrationBean<TestListener>(new TestListener());
+		ServletListenerRegistrationBean<TestListener> registration = new ServletListenerRegistrationBean<TestListener>(
+				new TestListener());
 		return registration;
 	}
 
@@ -68,12 +66,14 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		private static final long serialVersionUID = 1L;
 
 		@Override
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			super.doGet(req, resp);
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+				throws ServletException, IOException {
+			doPost(req, resp);
 		}
 
 		@Override
-		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+				throws ServletException, IOException {
 
 			resp.getWriter().print("test");
 			resp.getWriter().flush();
@@ -104,10 +104,13 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		}
 
 		@Override
-		public void doFilter(ServletRequest srequest, ServletResponse sresponse, FilterChain filterChain) throws IOException, ServletException {
+		public void doFilter(ServletRequest srequest,
+				ServletResponse sresponse, FilterChain filterChain)
+				throws IOException, ServletException {
 			HttpServletRequest request = (HttpServletRequest) srequest;
 			// 打印请求Url
-			System.out.println("this is MyFilter,url :" + request.getRequestURI());
+			System.out.println("this is MyFilter,url :"
+					+ request.getRequestURI());
 			filterChain.doFilter(srequest, sresponse);
 		}
 
@@ -115,5 +118,5 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		public void init(FilterConfig arg0) throws ServletException {
 		}
 	}
-	
+
 }
