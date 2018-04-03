@@ -25,7 +25,7 @@ public class TestWebService implements ITest {
 	
 	public static void main(String[] args) {
 		JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
-        Client client = dcf.createClient("http://localhost:8080/sboot-dev/services/itest?wsdl");
+        Client client = dcf.createClient("http://localhost:9090/sboot-dev/services/itest?wsdl");
         // 需要密码的情况需要加上用户名和密码
         // client.getOutInterceptors().add(new ClientLoginInterceptor(USER_NAME,
         // PASS_WORD));
